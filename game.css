@@ -1,0 +1,140 @@
+.board{
+    width: 100vh;
+    height: 100vh;
+    border: 1px solid #000000;
+    background: #E5E5E5;
+    justify-self: left;
+}
+
+.nestRow{
+    width: 100%;
+    height: 40%;
+    display: flex;
+}
+
+.homeRow{
+    width: 100%;
+    height: 20%;
+    display: flex;
+}
+
+.nest{
+    width: 40%;
+    height: 100%;
+    border: 1px solid #000000;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.red{
+    background: #DA2D2E;
+}
+.blue{
+    background: #009DCB;
+}
+.yellow{
+    background: #EED04D;
+}
+.green{
+    background: #AABB45;
+}
+
+.nestRow .path{
+    width: 20%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.homeRow .path{
+    width: 40%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.tokenHolder{
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    margin: 10%;
+    background: #E5E5E5;
+}
+
+.token{
+    width: 60%;
+    height: 60%;
+    margin: 20%;
+    background: none;
+}
+.token:hover{
+    filter: saturate(110%) brightness(130%) contrast(150%);
+}
+
+.nestRow .sidePath,.nestRow .hall{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.homeRow .sidePath,.homeRow .hall{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.tile{
+    border: 1px solid #000000;
+    box-sizing: border-box;;
+}
+.door{
+    background: #E5E5E5;
+}
+.hall.yellow .tile{
+    border-top: 2px solid #000000;
+    border-bottom: 0;
+}
+.hall.yellow .door{
+    border-top: 2px solid #000000;
+}
+
+.home{
+    width: 20%;
+    height: 100%;
+    border: 1px solid #000000;
+}
+
+.triangle{
+    width: 0%;
+    height: 0%;
+    background: none;
+    position: absolute;
+}
+.triangle.red{
+    border-top: 10vh solid transparent;
+    border-left: 10vh solid #DA2D2E;
+    border-bottom: 10vh solid transparent;
+}
+.triangle.blue{
+    border-left: 10vh solid transparent;
+    border-top: 10vh solid #009DCB;
+    border-right: 10vh solid transparent;
+}
+.triangle.green{
+    border-top: 10vh solid transparent;
+    border-right: 10vh solid #AABB45;
+    border-bottom: 10vh solid transparent;
+    border-left: 10vh solid transparent;
+}
+.triangle.yellow{
+    border-left: 10vh solid transparent;
+    border-bottom: 10vh solid #EED04D;
+    border-right: 10vh solid transparent;
+    border-top: 10vh solid transparent;
+    margin: -1px;
+}
+
+
+
+
