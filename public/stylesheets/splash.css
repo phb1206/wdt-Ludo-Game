@@ -1,0 +1,114 @@
+body {
+    background-image: url("../images/Diamond-Sunset.svg");
+    background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+h1 {
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 240px;
+    line-height: 100px;
+    letter-spacing: 0.255em;
+    color: #262626;
+    text-align: center;
+}
+
+button {
+/* unset all default button values */
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+    
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 115px;
+    line-height: 100px;
+    letter-spacing: 0.05em;
+    color: #FFD130;
+}
+
+button {
+/* unset all default button values */
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+    
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 115px;
+    line-height: 100px;
+    letter-spacing: 0.05em;
+    color: #FFD130;
+    
+    transtion: transform .2s;
+}
+
+button:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
+    color: aliceblue;
+}
+
+img {
+    width: 300px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
+    padding-bottom: 150px;
+}
+
+.wrapper2 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);   
+}
+
+h4 {
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 43px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+
+h3 {
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 75px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
