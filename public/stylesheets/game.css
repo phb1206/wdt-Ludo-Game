@@ -1,3 +1,10 @@
+body{
+    height: 100vh;
+    display: flex;
+}
+.side{
+    height: 100vh;
+}
 .board{
     width: 100vh;
     height: 100vh;
@@ -31,15 +38,19 @@
 
 .red{
     background: #DA2D2E;
+    color: #DA2D2E;
 }
 .blue{
     background: #009DCB;
+    color: #009DCB;
 }
 .yellow{
     background: #EED04D;
+    color: #EED04D;
 }
 .green{
     background: #AABB45;
+    color: #AABB45;
 }
 
 .nestRow .path{
@@ -72,6 +83,11 @@
 }
 .token:hover{
     filter: saturate(110%) brightness(130%) contrast(150%);
+}
+.token img{
+    width: 100%;
+    height: 100%;
+    background: none;
 }
 
 .nestRow .sidePath,.nestRow .hall{
@@ -135,6 +151,10 @@
     margin: -1px;
 }
 
-
+.dice button{
+    color: black;
+    padding: 10px;
+}
+.turn h1{background: none}
 
 
