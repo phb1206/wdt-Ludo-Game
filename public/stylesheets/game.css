@@ -1,6 +1,10 @@
 body{
-    height: 100vh;
-    display: flex;
+    /*height: 100vh;
+    display: flex;*/
+    background-image: url("../images/Diamond-Sunset.svg");
+    background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 .side{
     height: 100vh;
@@ -157,4 +161,35 @@ body{
 }
 .turn h1{background: none}
 
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.box{
+    background-color: #E5E5E5;
+    margin: 3vw;
+    width: 40vw;
+}
+
+.box2{
+    background-color: #E5E5E5;
+    margin-left: 3vw;
+    width: 10vw;
+}
+
+.box3{
+    background-color: #E5E5E5;
+    width: 10vw;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.imglogo{
+    margin-left: 3vw;
+    width: 250px;
+}
 
