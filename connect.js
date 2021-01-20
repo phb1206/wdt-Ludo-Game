@@ -27,7 +27,7 @@ game.prototype.transitionMatrix = [
   [0, 1, 0, 0, 0, 0, 0], //0 JOINT
   [1, 0, 1, 0, 0, 0, 0], //1 JOINT
   [0, 0, 0, 1, 0, 0, 1], //2 JOINT (note: once we have two players, there is no way back!)
-  [0, 0, 0, 1, 1, 1, 1], //CHAR GUESSED
+  [0, 0, 0, 1, 1, 1, 1], //MOVEMENT
   [0, 0, 0, 0, 0, 0, 0], //A WON
   [0, 0, 0, 0, 0, 0, 0], //B WON
   [0, 0, 0, 0, 0, 0, 0] //ABORTED
