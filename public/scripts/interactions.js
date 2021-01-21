@@ -65,12 +65,6 @@ function GameState(socket) {
         console.log("roll_sent")
     });
 
-    document.querySelector(".dice").querySelector("#pass").addEventListener("click", function () {
-        if (!gs.diceRolled) return
-        socket.send(Messages.S_END_TURN)
-        endTurn()
-    })
-
     for (const token of tokens) {
         token.element.addEventListener("click", function (){
 
@@ -117,7 +111,6 @@ function GameState(socket) {
 
         if (incomingMsg.type == Messages.O_END_TURN.type) {
             endTurn()
-            window.alert("Your Turn");
         }
 
         if (incomingMsg.type == Messages.O_SCORE_POINT.type) {

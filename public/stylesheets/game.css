@@ -185,6 +185,7 @@ body{
 .scoreBoard{
     background-color: #E5E5E5;
     margin: 3vw;
+    padding: 20px;
     width: 40vw;
 }
 .scoreBoard .red{
@@ -200,21 +201,46 @@ body{
     background-color: #E5E5E5;
     margin-left: 3vw;
     width: 10vw;
+    text-align: center;
 }
 
 .box3{
     background-color: #E5E5E5;
     width: 10vw;
+    text-align: center;
 }
 
 .wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+#roll{
+    font-size: 2em;
+    background-color: #009DCB;
+    color: #DDDDDD;
+    transition-duration: 0.6s;
+    border-width: thick;
+    border-color: #009DCB;
+    margin-bottom: 15px;
+}
+
+#roll:hover{
+    background-color: #DDDDDD;
+    color: black;
+    border-width: thick;
+    border-color: #009DCB
+    transition-duration: 0.6s;
 }
 
 .imglogo{
     margin-left: 3vw;
     width: 250px;
+    position: absolute;
+    left: 0;
+    bottom: 3vw;
 }
 
 .token.movable{
