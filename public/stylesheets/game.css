@@ -182,10 +182,18 @@ body{
     grid-template-columns: repeat(2, 1fr);
 }
 
-.box{
+.scoreBoard{
     background-color: #E5E5E5;
     margin: 3vw;
     width: 40vw;
+}
+.scoreBoard .red{
+    background: none;
+    color: #990000;
+}
+.scoreBoard .green{
+    background: none;
+    color: #009900;
 }
 
 .box2{
@@ -211,4 +219,7 @@ body{
 
 .token.movable{
     filter: saturate(110%) brightness(130%) contrast(150%);
+}
+img.notActive{
+    filter: saturate(0%) brightness(0%)
 }

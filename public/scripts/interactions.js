@@ -3,7 +3,9 @@ function GameState(socket) {
   this.playerType = null;
   this.diceValue = 0;
   this.diceRolled = false;
-  this.turn = "B";
+  this.turn = null;
+  this.playerAScore = 0;
+  this.playerBScore = 0;
 
   this.getPlayerType = function () {
     return this.playerType;
@@ -28,10 +30,25 @@ function GameState(socket) {
         if (gs.turn=="A") gs.turn="B"
         else if (gs.turn=="B") gs.turn="A"
         gs.diceRolled = false
+        document.querySelector(".turn h1").className=(gs.turn=="A" ? "red" : "green")
+        document.querySelector(".turn h1").innerHTML=(gs.turn==gs.playerType ? "Your Turn" : gs.turn=="A" ? "Red' Turn" : "Green's Turn")
         for (const token of tokens) {
             token.element.classList.remove("movable")
         }
-        console.log(gs.turn)
+    }
+
+    function scorePoint(id, player){
+        for (let token of tokens) {
+            if (token.id == id) {
+                token.path[token.pos].removeChild(token.element)
+                const scoreMessage = {
+                    "type": Messages.T_SCORE_POINT,
+                    "playerType": player,
+                }
+                socket.send(JSON.stringify(scoreMessage))
+                return
+            }
+        }
     }
 
     document.querySelector(".dice").querySelector("#roll").addEventListener("click", function () {
@@ -63,7 +80,8 @@ function GameState(socket) {
                 "tokenID": token.id,
             }
             socket.send(JSON.stringify(moveMessage))
-            move(token.id, gs.diceValue)
+            if (token.pos+gs.diceValue>55) scorePoint(token.id, gs.playerType)
+            else move(token.id, gs.diceValue)
             socket.send(Messages.S_END_TURN)
             endTurn()
         })
@@ -98,6 +116,42 @@ function GameState(socket) {
         }
 
         if (incomingMsg.type == Messages.O_END_TURN.type) {
+            endTurn()
+            window.alert("Your Turn");
+        }
+
+        if (incomingMsg.type == Messages.O_SCORE_POINT.type) {
+            if (incomingMsg.playerType=="A"){
+                document.querySelectorAll("#playerA img")[gs.playerAScore].classList.remove("notActive")
+                playerAScore++;
+                if (playerAScore==4) {
+                    const gameOver = {
+                        "type": messages.T_GAME_OVER,
+                        "data": "RED WON"
+                    }
+                    socket.send(gameOver)
+                }
+            }else {
+                document.querySelectorAll("#playerB img")[gs.playerBScore].classList.remove("notActive")
+                playerBScore++;
+                if (playerBScore==4) {
+                    const gameOver = {
+                        "type": messages.T_GAME_OVER,
+                        "data": "GREEN WON"
+                    }
+                    socket.send(gameOver)
+                }
+            }
+        }
+
+        if (incomingMsg.type == Messages.O_GAME_OVER.type) {
+            window.alert(incomingMsg.data);
+            document.querySelector(".turn h1").innerHTML=incomingMsg.data
+            gs=null
+        }
+
+        if (incomingMsg.type == Messages.O_START_GAME.type) {
+            gs.turn=incomingMsg.data
             endTurn()
         }
     }

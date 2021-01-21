@@ -12,13 +12,27 @@
     <div class="grid-container">
         
         <div class="side">
-            <div class="box">
+            <div class="scoreBoard">
                 <h1>Score</h1>
-                
-                <ul>
-                    <li>RED</li>
-                    <li>BLUE</li>
-                </ul>        
+
+                <div class="playerScore red" id="playerA">
+                      <h3 class="red">RED</h3>
+                    <div class="points">
+                        <img class="notActive" src="images/rToken.svg">
+                        <img class="notActive" src="images/rToken.svg">
+                        <img class="notActive" src="images/rToken.svg">
+                        <img class="notActive" src="images/rToken.svg">
+                    </div>
+                </div>
+                <div class="playerScore green" id="playerB">
+                    <h3 class="green">GREEN</h3>
+                    <div class="points">
+                        <img class="notActive" src="images/gToken.svg">
+                        <img class="notActive" src="images/gToken.svg">
+                        <img class="notActive" src="images/gToken.svg">
+                        <img class="notActive" src="images/gToken.svg">
+                    </div>
+                </div>
             </div>
             
             <div class="wrapper">
@@ -32,7 +46,7 @@
             
                 <div class="box3">
                     <div class="turn">
-                        <h1 class="red"></h1>
+                        <h1>Waiting for a player to join</h1>
                     </div>
                     <div class="dice">
                         <h1></h1>

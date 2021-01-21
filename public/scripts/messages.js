@@ -70,6 +70,18 @@
   };
   exports.S_END_TURN = JSON.stringify(exports.O_END_TURN);
 
+  exports.T_START_GAME = "START_GAME"
+  exports.O_START_GAME = {
+    type: exports.T_START_GAME,
+    data: null
+  };
+
+  exports.T_SCORE_POINT = "SCORE_POINT"
+  exports.O_SCORE_POINT = {
+    type: exports.T_SCORE_POINT,
+    playerType: null
+  };
+
   /*
    * Server to Player A & B: game over with result won/loss
    */

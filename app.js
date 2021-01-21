@@ -66,12 +66,19 @@ wss.on("connection", function connection(ws) {
     currentGame.id,
     playerType
   );
-    
-    
+
+
     /*
    * inform the client about its assigned player type
    */
-con.send(playerType == "A" ? messages.S_PLAYER_A : messages.S_PLAYER_B);
+  con.send(playerType == "A" ? messages.S_PLAYER_A : messages.S_PLAYER_B);
+
+
+  /*if (playerType == "B" && currentGame.getWord() != null) {
+    let msg = messages.O_TARGET_WORD;
+    msg.data = currentGame.getWord();
+    con.send(JSON.stringify(msg));
+  }*/
 
   /*
    * once we have two players, there is no way back;
@@ -79,11 +86,12 @@ con.send(playerType == "A" ? messages.S_PLAYER_A : messages.S_PLAYER_B);
    * if a player now leaves, the game is aborted (player is not preplaced)
    */
   if (currentGame.hasTwoConnectedPlayers()) {
-      
-      //give BLUE the first turn
-      let msg = messages.O_PLAYER_TURN;
-      con.send(JSON.stringify(msg));
-      
+    let msg = {
+      "type": messages.T_START_GAME,
+      "data": (Math.floor(Math.random() * 2)==0? "A" : "B")
+    }
+    currentGame.playerA.send(JSON.stringify(msg))
+    currentGame.playerB.send(JSON.stringify(msg))
     currentGame = new Game(gameStatus.gamesInitialized++);
   }
     
@@ -108,6 +116,23 @@ con.send(playerType == "A" ? messages.S_PLAYER_A : messages.S_PLAYER_B);
 
       gameObj.playerA.send(JSON.stringify(dice))
       gameObj.playerB.send(JSON.stringify(dice))
+    }
+
+    if (oMsg.type == messages.T_SCORE_POINT) {
+      if (gameObj.hasTwoConnectedPlayers()) {
+        gameObj.playerA.send(message);
+        gameObj.playerB.send(message);
+      }
+    }
+    if (oMsg.type == messages.T_GAME_OVER) {
+      if (gameObj.hasTwoConnectedPlayers()) {
+        gameObj.playerA.send(message);
+        gameObj.playerB.send(message);
+        gameObj.playerA.close();
+        gameObj.playerA = null;
+        gameObj.playerB.close();
+        gameObj.playerB = null;
+      }
     }
 
     if (isPlayerA) {
@@ -142,11 +167,17 @@ con.send(playerType == "A" ? messages.S_PLAYER_A : messages.S_PLAYER_B);
       if (gameObj.isValidTransition(gameObj.gameState, "ABORTED")) {
         gameObj.setStatus("ABORTED");
 
+        const gameOver = {
+          "type": messages.T_GAME_OVER,
+          "data": "ABORTED"
+        }
+
         /*
          * determine whose connection remains open;
          * close it
          */
         try {
+          gameObj.playerA.send(JSON.stringify(gameOver))
           gameObj.playerA.close();
           gameObj.playerA = null;
         } catch (e) {
@@ -154,6 +185,7 @@ con.send(playerType == "A" ? messages.S_PLAYER_A : messages.S_PLAYER_B);
         }
 
         try {
+          gameObj.playerB.send(JSON.stringify(message))
           gameObj.playerB.close();
           gameObj.playerB = null;
         } catch (e) {
