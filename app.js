@@ -15,12 +15,12 @@ var gameStatus = require("./statTracker");
 var Game = require("./connect");
 
 app.get("/", (req, res) => {
-  res.render("splash.ejs", {
-    gamesInitialized: gameStatus.gamesInitialized,
-    playersOnline: gameStatus.playersOnline,
-    gamesCompleted: gameStatus.gamesCompleted
-  });
-});
+    res.render("splash.ejs", {
+        gamesInitialized: gameStatus.gamesInitialized,
+        playersOnline: gameStatus.playersOnline,
+        gamesCompleted: gameStatus.gamesCompleted
+    });        
+});   
 
 app.get("/game", indexRouter);
 
