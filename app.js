@@ -94,6 +94,37 @@ con.send(playerType == "A" ? messages.S_PLAYER_A : messages.S_PLAYER_B);
    *  3. send the message to OP
    */
 
+  con.on("message", function incoming(message) {
+    let oMsg = JSON.parse(message);
+
+    let gameObj = websockets[con.id];
+    let isPlayerA = gameObj.playerA == con ? true : false;
+
+    if (oMsg.type == messages.T_ROLL_DICE) {
+      const dice = {
+        "type": exports.T_DICE_ROLLED,
+        "data": Math.floor(Math.random() * 6 + 1)
+      }
+
+      gameObj.playerA.send(JSON.stringify(dice))
+      gameObj.playerB.send(JSON.stringify(dice))
+    }
+
+    if (isPlayerA) {
+      if (oMsg.type == messages.T_TOKEN_MOVE || oMsg.type == messages.T_END_TURN) {
+        if (gameObj.hasTwoConnectedPlayers()) {
+          gameObj.playerB.send(message);
+        }
+      }
+    }else {
+      if (oMsg.type == messages.T_TOKEN_MOVE || oMsg.type == messages.T_END_TURN) {
+        if (gameObj.hasTwoConnectedPlayers()) {
+          gameObj.playerA.send(message);
+        }
+      }
+    }
+  })
+
   con.on("close", function(code) {
     /*
      * code 1001 means almost always closing initiated by the client;
@@ -133,4 +164,4 @@ con.send(playerType == "A" ? messages.S_PLAYER_A : messages.S_PLAYER_B);
   });   
 });
 
-server.listen(port);    
+server.listen(port);

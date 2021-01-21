@@ -1,8 +1,14 @@
 body {
-    background-image: url("../images/Diamond-Sunset.svg");
+    display: flex;
+    background:
+            linear-gradient(-135deg, #DA2D2E 10%, transparent 70%),
+            linear-gradient(-45deg, #EED04D 10%, transparent 70%),
+            linear-gradient(135deg, #009DCB 10%, transparent 70%),
+            linear-gradient(45deg, #AABB45 10%, transparent 70%);
+    background-repeat: no-repeat;
+    /*background-image: url("../images/Diamond-Sunset.svg");
     background-size: 100% 100%;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+	background-attachment: fixed;*/
 }
 
 h1 {

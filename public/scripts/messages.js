@@ -36,21 +36,39 @@
   exports.S_PLAYER_B = JSON.stringify(exports.O_PLAYER_B);
 
   /*
+   * Player to server: ask for dice roll
+   */
+  exports.T_ROLL_DICE = "ROLL_DICE";
+  exports.O_ROLL_DICE = {
+    type: exports.T_ROLL_DICE
+  };
+  exports.S_ROLL_DICE = JSON.stringify(exports.O_ROLL_DICE);
+
+  exports.T_DICE_ROLLED = "DICE_ROLLED";
+  exports.O_DICE_ROLLED = {
+    type: exports.T_DICE_ROLLED,
+    data: null
+  };
+
+  /*
    * Player to server: moved token position
    */
-  exports.TOKEN_MOVE = "TOKEN_MOVE";
+
+  exports.T_TOKEN_MOVE = "TOKEN_MOVE";
   exports.O_TOKEN_MOVE = {
     type: exports.T_TOKEN_MOVE,
-    data: null
+    tokenID: null
   };
   //exports.S_TARGET_WORD does not exist, as we always need to fill the data property
 
       /*
    * Server to Client: Your Turn
    */
-  exports.O_PLAYER_TURN = {
-    type: "PLAYER_TURN"
+  exports.T_END_TURN = "END_TURN"
+  exports.O_END_TURN = {
+    type: exports.T_END_TURN
   };
+  exports.S_END_TURN = JSON.stringify(exports.O_END_TURN);
 
   /*
    * Server to Player A & B: game over with result won/loss

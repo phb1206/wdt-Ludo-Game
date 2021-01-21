@@ -11,7 +11,7 @@
     
     <div class="grid-container">
         
-        <div>
+        <div class="side">
             <div class="box">
                 <h1>Score</h1>
                 
@@ -46,14 +46,14 @@
             <img class="imglogo" src="images/logo.jpg" alt="logo">
             
         </div>
-        
+
         <div class="board">
-            <div class="nestRow">
+            <div class="nestRow topRow">
                 <div class="nest red">
-                    <div class="tokenHolder"><img class="token red" src="images/rToken.svg" alt="Red Token"></div>
-                    <div class="tokenHolder"><img class="token red" src="images/rToken.svg" alt="Red Token"></div>
-                    <div class="tokenHolder"><img class="token red" src="images/rToken.svg" alt="Red Token"></div>
-                    <div class="tokenHolder"><img class="token red" src="images/rToken.svg" alt="Red Token"></div>
+                    <div class="tokenHolder"><div id="rt1" class="token red"><img src="images/rToken.svg"></div></div>
+                    <div class="tokenHolder"><div id="rt2" class="token red"><img src="images/rToken.svg"></div></div>
+                    <div class="tokenHolder"><div id="rt3" class="token red"><img src="images/rToken.svg"></div></div>
+                    <div class="tokenHolder"><div id="rt4" class="token red"><img src="images/rToken.svg"></div></div>
                 </div>
                 <div class="path">
                     <div class="sidePath">
@@ -80,10 +80,10 @@
                         <div class="tile"></div></div>
                 </div>
                 <div class="nest blue">
-                    <div class="tokenHolder"><img class="token blue" src="images/bToken.svg" alt="Blue Token"></div>
-                    <div class="tokenHolder"><img class="token blue" src="images/bToken.svg" alt="Blue Token"></div>
-                    <div class="tokenHolder"><img class="token blue" src="images/bToken.svg" alt="Blue Token"></div>
-                    <div class="tokenHolder"><img class="token blue" src="images/bToken.svg" alt="Blue Token"></div>
+                    <div class="tokenHolder"><div id="bt1" class="token blue"><img src="images/bToken.svg"></div></div>
+                    <div class="tokenHolder"><div id="bt2" class="token blue"><img src="images/bToken.svg"></div></div>
+                    <div class="tokenHolder"><div id="bt3" class="token blue"><img src="images/bToken.svg"></div></div>
+                    <div class="tokenHolder"><div id="bt4" class="token blue"><img src="images/bToken.svg"></div></div>
                 </div>
             </div>
             <div class="homeRow">
@@ -142,12 +142,12 @@
                         <div class="tile"></div></div>
                 </div>
             </div>
-            <div class="nestRow">
+            <div class="nestRow bottomRow">
                 <div class="nest yellow">
-                    <div class="tokenHolder"><img class="token yellow" src="images/yToken.svg" alt="Yellow Token"></div>
-                    <div class="tokenHolder"><img class="token yellow" src="images/yToken.svg" alt="Yellow Token"></div>
-                    <div class="tokenHolder"><img class="token yellow" src="images/yToken.svg" alt="Yellow Token"></div>
-                    <div class="tokenHolder"><img class="token yellow" src="images/yToken.svg" alt="Yellow Token"></div>
+                    <div class="tokenHolder"><div id="yt1" class="token yellow"><img src="images/yToken.svg"></div></div>
+                    <div class="tokenHolder"><div id="yt2" class="token yellow"><img src="images/yToken.svg"></div></div>
+                    <div class="tokenHolder"><div id="yt3" class="token yellow"><img src="images/yToken.svg"></div></div>
+                    <div class="tokenHolder"><div id="yt4" class="token yellow"><img src="images/yToken.svg"></div></div>
                 </div>
                 <div class="path">
                     <div class="sidePath">
@@ -174,14 +174,15 @@
                         <div class="tile"></div></div>
                 </div>
                 <div class="nest green">
-                    <div class="tokenHolder"><img class="token green" src="images/gToken.svg" alt="Green Token"></div>
-                    <div class="tokenHolder"><img class="token green" src="images/gToken.svg" alt="Green Token"></div>
-                    <div class="tokenHolder"><img class="token green" src="images/gToken.svg" alt="Green Token"></div>
-                    <div class="tokenHolder"><img class="token green" src="images/gToken.svg" alt="Green Token"></div>
+                    <div class="tokenHolder"><div id="gt1" class="token green"><img src="images/gToken.svg"></div></div>
+                    <div class="tokenHolder"><div id="gt2" class="token green"><img src="images/gToken.svg"></div></div>
+                    <div class="tokenHolder"><div id="gt3" class="token green"><img src="images/gToken.svg"></div></div>
+                    <div class="tokenHolder"><div id="gt4" class="token green"><img src="images/gToken.svg"></div></div>
                 </div>
             </div>
-        </div>     
+        </div>
     </div>
+    <script src="scripts/tokens.js"></script>
     <script src="scripts/game.js"></script>
     <script src="scripts/config.js"></script>
     <script src="scripts/interactions.js"></script>

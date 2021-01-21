@@ -1,13 +1,19 @@
 body{
-    /*height: 100vh;
-    display: flex;*/
-    background-image: url("../images/Diamond-Sunset.svg");
+    height: 100vh;
+    display: flex;
+    margin: 0;
+    /*background-image: url("../images/Diamond-Sunset.svg");
     background-size: 100% 100%;
 	background-repeat: no-repeat;
-	background-attachment: fixed;
+	background-attachment: fixed;*/
 }
 .side{
     height: 100vh;
+    background:
+        linear-gradient(-135deg, #DA2D2E 10%, transparent 70%),
+        linear-gradient(-45deg, #EED04D 10%, transparent 70%),
+        linear-gradient(135deg, #009DCB 10%, transparent 70%),
+        linear-gradient(45deg, #AABB45 10%, transparent 70%);
 }
 .board{
     width: 100vh;
@@ -88,6 +94,7 @@ body{
 .token:hover{
     filter: saturate(110%) brightness(130%) contrast(150%);
 }
+
 .token img{
     width: 100%;
     height: 100%;
@@ -95,19 +102,28 @@ body{
 }
 
 .nestRow .sidePath,.nestRow .hall{
+    height: 40vh;
+    width: 6.6667vh;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .homeRow .sidePath,.homeRow .hall{
+    height: 6.6667vh;
+    width: 40vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .tile{
     border: 1px solid #000000;
-    box-sizing: border-box;;
+    box-sizing: border-box;
+    display: flex;
 }
+.tile .token:not(:first-child){
+    display: none;
+}
+
 .door{
     background: #E5E5E5;
 }
@@ -193,3 +209,6 @@ body{
     width: 250px;
 }
 
+.token.movable{
+    filter: saturate(110%) brightness(130%) contrast(150%);
+}
