@@ -34,25 +34,6 @@
     data: "B"
   };
   exports.S_PLAYER_B = JSON.stringify(exports.O_PLAYER_B);
-    
-/*
-   * Server to client: set as player C
-   */
-  exports.T_PLAYER_TYPE = "PLAYER-TYPE";
-  exports.O_PLAYER_C = {
-    type: exports.T_PLAYER_TYPE,
-    data: "C"
-  };
-  exports.S_PLAYER_C = JSON.stringify(exports.O_PLAYER_C);
-
-  /*
-   * Server to client: set as player D
-   */
-  exports.O_PLAYER_D = {
-    type: exports.T_PLAYER_TYPE,
-    data: "D"
-  };
-  exports.S_PLAYER_D = JSON.stringify(exports.O_PLAYER_D);
 
   /*
    * Player to server: moved token position
@@ -63,15 +44,13 @@
     data: null
   };
   //exports.S_TARGET_WORD does not exist, as we always need to fill the data property
-    
-  /*
-   * Client to server: connect me to a game
+
+      /*
+   * Server to Client: Your Turn
    */
-  exports.CONNECT_ME = "CONNECT";
-  exports.O_CONNECT_ME = {
-    type: exports.CONNECT_ME,
+  exports.O_PLAYER_TURN = {
+    type: "PLAYER_TURN"
   };
-    
 
   /*
    * Server to Player A & B: game over with result won/loss

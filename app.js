@@ -16,7 +16,7 @@ var Game = require("./connect");
 
 app.get("/", (req, res) => {
   res.render("splash.ejs", {
-    gamesOngoing: gameStatus.gamesOngoing,
+    gamesInitialized: gameStatus.gamesInitialized,
     playersOnline: gameStatus.playersOnline,
     gamesCompleted: gameStatus.gamesCompleted
   });
@@ -50,6 +50,7 @@ var currentGame = new Game(gameStatus.gamesInitialized++);
 var connectionID = 0; //each websocket receives a unique ID
 
 wss.on("connection", function connection(ws) {
+    gameStatus.playersOnline++;
   /*
    * two-player game: every two players are added to the same game
    */
@@ -78,7 +79,11 @@ con.send(playerType == "A" ? messages.S_PLAYER_A : messages.S_PLAYER_B);
    * if a player now leaves, the game is aborted (player is not preplaced)
    */
   if (currentGame.hasTwoConnectedPlayers()) {
-    gameStatus.gamesOngoing = gameStatus.gamesOngoing++;
+      
+      //give BLUE the first turn
+      let msg = messages.O_PLAYER_TURN;
+      con.send(JSON.stringify(msg));
+      
     currentGame = new Game(gameStatus.gamesInitialized++);
   }
     
@@ -88,13 +93,14 @@ con.send(playerType == "A" ? messages.S_PLAYER_A : messages.S_PLAYER_B);
    *  2. determine the opposing player OP
    *  3. send the message to OP
    */
-  
+
   con.on("close", function(code) {
     /*
      * code 1001 means almost always closing initiated by the client;
      * source: https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent
      */
     console.log(con.id + " disconnected ...");
+      gameStatus.playersOnline--;
 
     if (code == "1001") {
       /*
@@ -104,7 +110,6 @@ con.send(playerType == "A" ? messages.S_PLAYER_A : messages.S_PLAYER_B);
 
       if (gameObj.isValidTransition(gameObj.gameState, "ABORTED")) {
         gameObj.setStatus("ABORTED");
-        gameStatus.gamesOngoing--;
 
         /*
          * determine whose connection remains open;

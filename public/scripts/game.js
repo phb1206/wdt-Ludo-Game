@@ -1,8 +1,9 @@
 var dice = {
     element: document.querySelector(".dice"),
     value:0,
-    rolled:false
+    rolled:true
 };
+
 dice.element.querySelector("#roll").addEventListener("click", function () {
     if (dice.rolled) return
     let x = Math.floor(Math.random() * 6 + 1);
@@ -10,6 +11,7 @@ dice.element.querySelector("#roll").addEventListener("click", function () {
     dice.element.querySelector("h1").innerHTML = x
     dice.rolled=true
 });
+
 dice.element.querySelector("#pass").addEventListener("click", function () {
     if (!dice.rolled) return
     endTurn()

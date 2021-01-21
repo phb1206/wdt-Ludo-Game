@@ -20,10 +20,6 @@ function GameState(socket) {
     */
 
     var gs = new GameState(socket);
-    
-    socket.onopen = function () {
-        socket.send(Messages.CONNECT_ME);
-    };
 
     socket.onmessage = function (event) {
         let incomingMsg = JSON.parse(event.data);
@@ -31,7 +27,25 @@ function GameState(socket) {
         //set player type
         if (incomingMsg.type == Messages.T_PLAYER_TYPE) {
           gs.setPlayerType(incomingMsg.data); //should be "A" or "B"
-        }   
+            
+            if(incomingMsg.data == "A"){
+                window.alert("You are RED");
+                document.querySelector(".turn h1").className="red";
+                document.querySelector(".turn h1").innerHTML="";
+            }
+            else{
+                window.alert("You are BLUE");
+                document.querySelector(".turn h1").className="blue";
+                document.querySelector(".turn h1").innerHTML="";
+            }
+        }
+        
+        //player turn
+        if (incomingMsg.type == Messages.O_PLAYER_TURN.type) {
+          dice.rolled = false;
+            console.log("YOUR TURN")
+          document.querySelector(".turn h1").innerHTML="YOUR TURN";
+        }
     }
   
     socket.onerror = function () { };
