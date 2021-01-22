@@ -235,6 +235,24 @@ body{
     transition-duration: 0.6s;
 }
 
+#pass{
+    font-size: 2em;
+    background-color: #DA2D2E;
+    color: #DDDDDD;
+    transition-duration: 0.6s;
+    border-width: thick;
+    border-color: #DA2D2E;
+    margin-bottom: 15px;
+}
+
+#pass:hover{
+    background-color: #DDDDDD;
+    color: black;
+    border-width: thick;
+    border-color: #DA2D2E
+    transition-duration: 0.6s;
+}
+
 .imglogo{
     margin-left: 3vw;
     width: 250px;

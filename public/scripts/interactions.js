@@ -64,6 +64,12 @@ function GameState(socket) {
         socket.send(Messages.S_ROLL_DICE)
         console.log("roll_sent")
     });
+    
+    document.querySelector(".dice").querySelector("#pass").addEventListener("click", function () {
+        if (!gs.diceRolled) return
+        socket.send(Messages.S_END_TURN)
+        endTurn()
+    })
 
     for (const token of tokens) {
         token.element.addEventListener("click", function (){
