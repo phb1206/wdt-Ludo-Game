@@ -204,6 +204,10 @@ body{
     text-align: center;
 }
 
+.box2 h2::after {
+    content: " 🕰";
+}
+
 .box3{
     background-color: #E5E5E5;
     width: 10vw;
@@ -231,7 +235,7 @@ body{
     background-color: #DDDDDD;
     color: black;
     border-width: thick;
-    border-color: #009DCB
+    border-color: #009DCB;
     transition-duration: 0.6s;
 }
 
@@ -249,7 +253,7 @@ body{
     background-color: #DDDDDD;
     color: black;
     border-width: thick;
-    border-color: #DA2D2E
+    border-color: #DA2D2E;
     transition-duration: 0.6s;
 }
 
@@ -266,4 +270,17 @@ body{
 }
 img.notActive{
     filter: saturate(0%) brightness(0%)
+}
+
+.imglogo{
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    20% {
+        transform: rotate3d(0, 1, 0, 180deg);
+    }
+    40%, 100% {
+        transform: rotate3d(0, 1, 0, 360deg);
+    }
 }

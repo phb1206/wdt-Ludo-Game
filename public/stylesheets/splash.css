@@ -155,3 +155,23 @@ h3 {
   overflow: auto;
 }
 
+
+h1::before {
+    content: "★ ";
+}
+h1::after {
+    content: " ★";
+}
+
+.imglogo{
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    20% {
+        transform: rotate3d(0, 1, 0, 180deg);
+    }
+    40%, 100% {
+        transform: rotate3d(0, 1, 0, 360deg);
+    }
+}
