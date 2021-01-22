@@ -16,6 +16,9 @@ function GameState(socket) {
   };
 }
 
+let sound = new Audio("../data/dice.mp3");
+let mute = false;
+
 //set everything up, including the WebSocket
 (function setup() {
     var socket = new WebSocket(Setup.WEB_SOCKET_URL);
@@ -50,12 +53,27 @@ function GameState(socket) {
             }
         }
     }
+    
+    document.querySelector("#mute").addEventListener("click", function () {
+        if(mute == false){
+            mute = true;
+            document.querySelector("#mute").innerHTML = "Unmute";
+        }
+        else{
+            mute = false;
+            document.querySelector("#mute").innerHTML = "Mute";
+        }
+    });
 
     document.querySelector(".dice").querySelector("#roll").addEventListener("click", function () {
         if (gs.diceRolled) return
         if (gs.playerType!=gs.turn) return
 
         console.log("rolling")
+        
+        if(mute == false){
+            sound.play();
+        }
 
         const rollDice = {
             "type": Messages.T_ROLL_DICE,
