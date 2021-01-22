@@ -30,7 +30,7 @@ function token(element){
     this.element = element
     this.id = element.id
     this.player = element.classList[1]
-    this.pos = 0
+    this.pos = -6
 
     if (this.player=="red") this.path=redPath
     if (this.player=="blue") this.path=bluePath
