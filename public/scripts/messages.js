@@ -1,20 +1,4 @@
 (function(exports) {
-  /*
-   * Client to server: game is complete, the winner is ...
-   */
-  exports.T_GAME_WON_BY = "GAME-WON-BY";
-  exports.O_GAME_WON_BY = {
-    type: exports.T_GAME_WON_BY,
-    data: null
-  };
-
-  /*
-   * Server to client: abort game (e.g. if second player exited the game)
-   */
-  exports.O_GAME_ABORTED = {
-    type: "GAME-ABORTED"
-  };
-  exports.S_GAME_ABORTED = JSON.stringify(exports.O_GAME_ABORTED);
 
   /*
    * Server to client: set as player A
@@ -44,6 +28,9 @@
   };
   exports.S_ROLL_DICE = JSON.stringify(exports.O_ROLL_DICE);
 
+  /*
+   * Server to players: answers both with rolled value
+   */
   exports.T_DICE_ROLLED = "DICE_ROLLED";
   exports.O_DICE_ROLLED = {
     type: exports.T_DICE_ROLLED,
@@ -51,18 +38,16 @@
   };
 
   /*
-   * Player to server: moved token position
+   * Server to players: move token
    */
-
   exports.T_TOKEN_MOVE = "TOKEN_MOVE";
   exports.O_TOKEN_MOVE = {
     type: exports.T_TOKEN_MOVE,
     tokenID: null
   };
-  //exports.S_TARGET_WORD does not exist, as we always need to fill the data property
 
-      /*
-   * Server to Client: Your Turn
+  /*
+   * Server to Clients: End current turn
    */
   exports.T_END_TURN = "END_TURN"
   exports.O_END_TURN = {
@@ -70,12 +55,18 @@
   };
   exports.S_END_TURN = JSON.stringify(exports.O_END_TURN);
 
+  /*
+   * Server to Client: allow first move
+   */
   exports.T_START_GAME = "START_GAME"
   exports.O_START_GAME = {
     type: exports.T_START_GAME,
     data: null
   };
 
+  /*
+   * Server to Clients: score +1 point
+   */
   exports.T_SCORE_POINT = "SCORE_POINT"
   exports.O_SCORE_POINT = {
     type: exports.T_SCORE_POINT,
@@ -83,7 +74,7 @@
   };
 
   /*
-   * Server to Player A & B: game over with result won/loss
+   * Server to Player A & B: game over with result won/loss/abandoned
    */
   exports.T_GAME_OVER = "GAME-OVER";
   exports.O_GAME_OVER = {
